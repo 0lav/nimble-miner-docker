@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  nimble-miner:
+    build: .
+    environment:
+      - NIMBLE_WALLET_ADDRESS=<your-nimble-wallet-address>
+    restart: unless-stopped
