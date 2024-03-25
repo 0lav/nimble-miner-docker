@@ -3,18 +3,37 @@
 This project is to run Nimble Miner in docker-compose. 
 https://github.com/nimble-technology/nimble-miner-public
 
-## To-Do (Not Implemented Yet)
-- [ ] Multi-GPU support
-- [ ] Performance optimizations
+## Run using Docker
 
-## Installation
+Execute this command to download and run Nimble Miner using your supplied wallet address.
+
+```sh
+docker run -it --gpus=all --env=NIMBLE_WALLET_ADDRESS=YOURWALLETADDRESS 0lav/nimble-miner-public
+```
+
+## Run using RunPod GPU Cloud
+- Login to your account and create a new GPU Pod
+- Select the GPU you want to use (RTX 4090 recommended) and click Deploy
+- Click `Customize Deployment`
+- Replace Container Image with this
+  ```sh
+  0lav/nimble-miner-public:latest
+
+- Expand `Enviornment Variables` and enter your wallet address in a key and value format.
+  ```sh
+  Key: NIMBLE_WALLET_ADDRESS
+  VALUE: YOUR WALLET ADDRESS
+  
+RunPod referral link https://runpod.io?ref=qvfcm6u5 
+
+## Run using Docker Compose
 
 1. Clone the repository using Git:
 
    ```sh
    git clone https://github.com/0lav/nimble-miner-docker.git
    cd nimble-miner-docker
-
+   
 ### Setting Environment Variables and Running Miner
 
 1. **Option 1: Use `.env` File**
