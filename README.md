@@ -57,7 +57,7 @@ https://github.com/nimble-technology/nimble-miner-public
    ```sh
    docker-compose down
    docker-compose build --no-chache && docker-compose up -d
-
+```
 ## Contributors
-- Olav (@saintolav)
-- Hani (@xh)
+- Olav (Discord @saintolav)
+- Hani (Discord @xh)
