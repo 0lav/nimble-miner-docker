@@ -60,4 +60,4 @@ https://github.com/nimble-technology/nimble-miner-public
 ```
 ## Contributors
 - Olav (Discord @saintolav)
-- Hani (Discord @xh)
+- Hani (Discord @xH)
