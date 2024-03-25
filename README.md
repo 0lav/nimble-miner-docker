@@ -1,6 +1,11 @@
 # Nimble Miner
 
-This project is a GPU miner powered by Nimble Technology. It allows you to mine cryptocurrency efficiently using your GPU.
+This project is to run Nimble Miner in docker-compose. 
+https://github.com/nimble-technology/nimble-miner-public
+
+## To-Do (Not Implemented Yet)
+- [ ] Multi-GPU support
+- [ ] Performance optimizations
 
 ## Installation
 
@@ -18,13 +23,13 @@ This project is a GPU miner powered by Nimble Technology. It allows you to mine 
    - Open the `.env` file in a text editor and enter your Nimble wallet address.
    - Run the following command to start the miner using Docker Compose:
      ```sh
-     docker-compose up
+     docker-compose up -d
      
 2. **Option 2: Use System Variables**
    - Set the necessary environment variables directly in your system or hosting provider.
    - Run the following command to start the miner using Docker Compose:
      ```sh
-     docker-compose up
+     docker-compose up -d
 
     #### Environment Variables 
     ## Linux
@@ -47,6 +52,13 @@ This project is a GPU miner powered by Nimble Technology. It allows you to mine 
     export NIMBLE_WALLET_ADDRESS=your_wallet_address
     export GPU=<gpu_index>
     ```
+## Updating Nimble Miner
+   If Nimble releases a new version of their miner you can update it and re-launch by running
+   ```sh
+   docker-compose down
+   docker-compose build --no-chache && docker-compose up -d
 
-
+## Contributors
+- Olav (@saintolav)
+- Hani (@xh)
 
