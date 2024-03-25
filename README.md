@@ -35,22 +35,18 @@ https://github.com/nimble-technology/nimble-miner-public
     ## Linux
     ```sh
     export NIMBLE_WALLET_ADDRESS=your_wallet_address
-    export GPU=<gpu_index>
     ```
     ## Windows (PowerShell)
     ```powershell
     $env:NIMBLE_WALLET_ADDRESS="your_wallet_address"
-    $env:GPU="<gpu_index>"
     ```
     ## Windows (Command Prompt)
     ```batch
     set NIMBLE_WALLET_ADDRESS=your_wallet_address
-    set GPU=<gpu_index>
     ```
     ## macOS
     ```sh
     export NIMBLE_WALLET_ADDRESS=your_wallet_address
-    export GPU=<gpu_index>
     ```
 ## Updating Nimble Miner
    If Nimble releases a new version of their miner you can update it and re-launch by running
