@@ -12,7 +12,7 @@ https://github.com/nimble-technology/nimble-miner-public
 1. Clone the repository using Git:
 
    ```sh
-   git clone[https://github.com/0lav/nimble-miner-docker.git
+   git clone https://github.com/0lav/nimble-miner-docker.git
    cd nimble-miner-docker
 
 ### Setting Environment Variables and Running Miner
