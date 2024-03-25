@@ -61,4 +61,3 @@ https://github.com/nimble-technology/nimble-miner-public
 ## Contributors
 - Olav (@saintolav)
 - Hani (@xh)
-
