@@ -56,7 +56,7 @@ https://github.com/nimble-technology/nimble-miner-public
    If Nimble releases a new version of their miner you can update it and re-launch by running
    ```sh
    docker-compose down
-   docker-compose build --no-chache && docker-compose up -d
+   docker-compose build --no-cache && docker-compose up -d
 ```
 ## Contributors
 - Olav (Discord @saintolav)
