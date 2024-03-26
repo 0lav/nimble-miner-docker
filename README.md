@@ -68,10 +68,7 @@ RunPod referral link https://runpod.io?ref=qvfcm6u5
     export NIMBLE_WALLET_ADDRESS=your_wallet_address
     ```
 ## Updating Nimble Miner
-   If Nimble releases a new version of their miner you can update it and re-launch by running
-   ```sh
-   docker-compose down
-   docker-compose build --no-cache && docker-compose up -d
+   If Nimble releases a new version of their miner you can update it by restarting your docker container. It will check for a new version. 
 ```
 ## Contributors
 - Olav (Discord @saintolav)
