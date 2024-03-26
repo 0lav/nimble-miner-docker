@@ -6,7 +6,6 @@ services:
     tty: true
     build: .
     environment:
-      - NIMBLE_WALLET_ADDRESS=${NIMBLE_WALLET_ADDRESS}
       - NVIDIA_VISIBLE_DEVICES=${GPU:-all}
       - PYTHONUNBUFFERED=1
     deploy:
