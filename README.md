@@ -1,6 +1,6 @@
 # Nimble Miner
 
-This project is to run Nimble Miner in docker-compose. 
+This project is to run Nimble Miner in Docker.
 https://github.com/nimble-technology/nimble-miner-public
 
 ## Run using Docker
@@ -8,7 +8,7 @@ https://github.com/nimble-technology/nimble-miner-public
 Execute this command to download and run Nimble Miner using your supplied wallet address.
 
 ```sh
-docker run -it --gpus=all --env=NIMBLE_WALLET_ADDRESS=YOURWALLETADDRESS 0lav/nimble-miner-public
+docker run --gpus=all --env=NIMBLE_WALLET_ADDRESS=YOURWALLETADDRESS 0lav/nimble-miner-public
 ```
 
 ## Run using RunPod GPU Cloud
