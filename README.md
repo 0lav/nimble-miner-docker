@@ -1,16 +1,27 @@
 # Nimble Miner
 
-This project is to run Nimble Miner in Docker.
+This project is to run Nimble AI Miner in Docker and uses the offical repo.
 https://github.com/nimble-technology/nimble-miner-public
+
+This project also includes Tmux. Use "tmux attach-session -r -t nimble" through a terminal session to view mining progress.
 
 ## Run using Docker
 
-Execute this command to download and run Nimble Miner using your supplied wallet address.
+Execute this command to download and run Nimble Miner using your supplied wallet address. Replace "YOURWALLETADDRESS" with yours (duh)
 
-```sh
-docker run --gpus=all --env=NIMBLE_WALLET_ADDRESS=YOURWALLETADDRESS 0lav/nimble-miner-public
-```
-
+  ```sh
+  docker run --gpus=all -e NIMBLE_WALLET_ADDRESS=YOURWALLETADDRESS 0lav/nimble-miner-public
+  ```
+  ### Optional Flags
+  - Run without Tmux, for displaying mining activity in docker logs only.
+    ```sh
+    -e TMUX=false
+  - Custom Miner Repo, for using custom miner configuratons.
+    ```sh
+    -e REPO=https://github.com/nimble-technology/nimble-miner-public
+  - Specify GPU, for running on specific GPUs
+    ```sh
+    --gpus=0 -e CUDA_VISIBLE_DEVICES=0
 ## Run using RunPod GPU Cloud
 - Login to your account and create a new GPU Pod
 - Select the GPU you want to use (RTX 4090 recommended) and click Deploy
