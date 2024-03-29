@@ -6,8 +6,9 @@ services:
     tty: true
     build: .
     environment:
-      - NVIDIA_VISIBLE_DEVICES=${GPU:-all}
-      - PYTHONUNBUFFERED=1
+      NVIDIA_VISIBLE_DEVICES: ${GPU:-all}
+      PYTHONUNBUFFERED: "1"
+
     deploy:
       resources:
         reservations:

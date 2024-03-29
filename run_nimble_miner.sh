@@ -1,43 +1,34 @@
 #!/bin/bash
 
-# Set the working directory
-WORKDIR=/usr/src/app
+set -e
 
-cd $WORKDIR
+WORKDIR=/usr/src/app
+NIMBLE_MINER_DIR="$WORKDIR/nimble-miner-public"
+
+cd "$WORKDIR"
 
 # Check if a custom repository URL is provided
 if [ -n "$REPO" ]; then
-    # Print the repository URL
     echo "Cloning repository: $REPO"
-
-    rm -rf $WORKDIR/nimble-miner-public
-
-    git clone $REPO $WORKDIR/nimble-miner-public
-
-    cd $WORKDIR/nimble-miner-public
-
+    rm -rf "$NIMBLE_MINER_DIR"
+    git clone "$REPO" "$NIMBLE_MINER_DIR"
+    cd "$NIMBLE_MINER_DIR"
     make install
-
-    if [ -f "./nimenv_localminers/bin/activate" ]; then
-        source ./nimenv_localminers/bin/activate
-    fi
+    rm -rf /root/.cache/pip
+    source ./nimenv_localminers/bin/activate
 else
-    # If no custom repository is provided, use the default miner
-    cd $WORKDIR/nimble-miner-public
-	source ./nimenv_localminers/bin/activate
+    cd "$NIMBLE_MINER_DIR"
+    source ./nimenv_localminers/bin/activate
     echo "No custom repository provided. Using default miner."
-	# Pull the latest changes from the repository
     git pull
 fi
 
-# Check if TMUX is set to true
+# Start the miner session
 if [ -z "$TMUX" ] || [ "$TMUX" != "false" ]; then
-    # Start a new tmux session named "nimble" and run the miner inside it
     tmux new-session -d -s "nimble" "make run addr=${NIMBLE_WALLET_ADDRESS}"
     echo "Started Nimble Miner session. Use 'tmux attach-session -r -t nimble' to view the output."
 else
-    # Run the miner directly without tmux
-    make run addr=${NIMBLE_WALLET_ADDRESS}
+    make run addr="${NIMBLE_WALLET_ADDRESS}"
 fi
 
 tail -f /dev/null
