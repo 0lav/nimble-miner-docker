@@ -1,41 +1,63 @@
 # Nimble Miner
 
-This project is to run Nimble AI Miner in Docker and uses the offical repo.
+This project is to run Nimble AI Miner in Docker and uses the official repo.
 https://github.com/nimble-technology/nimble-miner-public
 
 This project also includes Tmux. Use "tmux attach-session -r -t nimble" through a terminal session to view mining progress.
 
+## index
+- [Run using Docker](#run-using-docker)
+- [Run using RunPod GPU Cloud](#run-using-runpod-gpu-cloud)
+- [Run using Docker Compose](#run-using-docker-compose)
+- [Building the Pre-built Docker Image](#building-the-pre-built-docker-image)
+- [Contributors](#contributors)
+
+
 ## Run using Docker
 
-Execute this command to download and run Nimble Miner using your supplied wallet address. Replace "YOURWALLETADDRESS" with your's.
+Execute this command to download and run Nimble Miner using your supplied wallet address. Replace "YOURWALLETADDRESS" with yours.
 
   ```sh
-  docker run --gpus=all -e NIMBLE_WALLET_ADDRESS=YOURWALLETADDRESS 0lav/nimble-miner-public
+  docker run --gpus all -e NVIDIA_VISIBLE_DEVICES=all -e TMUX=false -e NIMBLE_WALLET_ADDRESS=YOURWALLETADDRESS 0lav/nimble-miner-prebuilt
   ```
   ### Optional Flags
   - Run without Tmux, for displaying mining activity in docker logs only.
     ```sh
     -e TMUX=false
-  - Custom Miner Repo, for using custom miner configuratons.
+    ```
+  - Use a custom miner repository for custom miner configurations.
     ```sh
-    -e REPO=https://github.com/nimble-technology/nimble-miner-public
+    -e REPO=https://github.com/your-username/custom-miner-repo
   - Specify GPU, for running on specific GPUs
     ```sh
     --gpus=0 -e CUDA_VISIBLE_DEVICES=0
+    ```
 ## Run using RunPod GPU Cloud
+**RunPod referral link [https://runpod.io?ref=qvfcm6u5](https://runpod.io?ref=qvfcm6u5 )**  
 - Login to your account and create a new GPU Pod
 - Select the GPU you want to use (RTX 4090 recommended) and click Deploy
 - Click `Customize Deployment`
 - Replace Container Image with this
   ```sh
-  0lav/nimble-miner-public:latest
+  0lav/nimble-miner-prebuilt:latest
+  ```
 
 - Expand `Enviornment Variables` and enter your wallet address in a key and value format.
-  ```sh
-  Key: NIMBLE_WALLET_ADDRESS
-  VALUE: YOUR WALLET ADDRESS
+  ```dotenv
+  # Required
+    Key: NIMBLE_WALLET_ADDRESS
+    Value: YOUR_WALLET_ADDRESS
+    
+  # Optional
+    Key: TMUX
+    Value: false  # Set to false to run without Tmux
+    
+  # Optional, provide a custom miner repository
+    Key: REPO
+    Value: https://github.com/your-username/custom-miner-repo
+  ```
   
-RunPod referral link https://runpod.io?ref=qvfcm6u5 
+**RunPod referral link [https://runpod.io?ref=qvfcm6u5](https://runpod.io?ref=qvfcm6u5 )**  
 
 ## Run using Docker Compose
 
@@ -80,7 +102,31 @@ RunPod referral link https://runpod.io?ref=qvfcm6u5
     ```
 ## Updating Nimble Miner
    If Nimble releases a new version of their miner you can update it by restarting your docker container. It will check for a new version. 
+
+
+## Building the Pre-built Docker Image
+To create a pre-built Docker image with all the dependencies installed and the Nimble Miner repository cloned and set up, you can use a multi-stage build approach.
+
+* Open the `Dockerfile` and update the `ARG` instruction with the desired repository URL:
+```sh
+ARG REPO=https://github.com/your-username/custom-miner-repo
 ```
+Replace https://github.com/your-username/custom-miner-repo with the URL of the repository you want to use.
+* Build the pre-built Docker image:
+```sh
+docker build -t nimble-miner-prebuilt .
+```
+* Push the pre-built Docker image to a container registry (e.g., Docker Hub) for distribution:
+```sh
+docker tag nimble-miner-prebuilt your-dockerhub-username/nimble-miner-prebuilt
+docker push your-dockerhub-username/nimble-miner-prebuilt
+```
+Replace your-dockerhub-username with your actual Docker Hub username.
+
+
+
 ## Contributors
+```
 - Olav (Discord @saintolav)
 - Hani (Discord @xH)
+```

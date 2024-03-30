@@ -4,11 +4,15 @@ services:
   nimble-miner:
     stdin_open: true
     tty: true
-    build: .
+    build:
+      context: .
+#      args: # Uncomment and set REPO to use custom miner repository
+#        REPO: ""
     environment:
       NVIDIA_VISIBLE_DEVICES: ${GPU:-all}
       PYTHONUNBUFFERED: "1"
-
+#      TMUX: "false" # Uncomment to disable tmux
+#      NIMBLE_WALLET_ADDRESS: "" # Uncomment and set wallet address
     deploy:
       resources:
         reservations:

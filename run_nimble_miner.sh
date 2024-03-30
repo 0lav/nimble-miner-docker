@@ -3,25 +3,12 @@
 set -e
 
 WORKDIR=/usr/src/app
-NIMBLE_MINER_DIR="$WORKDIR/nimble-miner-public"
+NIMBLE_MINER_DIR="$WORKDIR/nimble-miner"
 
-cd "$WORKDIR"
-
-# Check if a custom repository URL is provided
-if [ -n "$REPO" ]; then
-    echo "Cloning repository: $REPO"
-    rm -rf "$NIMBLE_MINER_DIR"
-    git clone "$REPO" "$NIMBLE_MINER_DIR"
-    cd "$NIMBLE_MINER_DIR"
-    make install
-    rm -rf /root/.cache/pip
-    source ./nimenv_localminers/bin/activate
-else
-    cd "$NIMBLE_MINER_DIR"
-    source ./nimenv_localminers/bin/activate
-    echo "No custom repository provided. Using default miner."
-    git pull
-fi
+cd "$NIMBLE_MINER_DIR"
+git pull # Update the miner code if needed
+source ./nimenv_localminers/bin/activate
+make install # Install the miner dependencies if needed
 
 # Start the miner session
 if [ -z "$TMUX" ] || [ "$TMUX" != "false" ]; then
