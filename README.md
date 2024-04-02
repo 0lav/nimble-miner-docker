@@ -114,12 +114,12 @@ ARG REPO=https://github.com/your-username/custom-miner-repo
 Replace https://github.com/your-username/custom-miner-repo with the URL of the repository you want to use.
 * Build the pre-built Docker image:
 ```sh
-docker build -t nimble-miner-prebuilt .
+docker build -t nimble-miner-public .
 ```
 * Push the pre-built Docker image to a container registry (e.g., Docker Hub) for distribution:
 ```sh
-docker tag nimble-miner-prebuilt your-dockerhub-username/nimble-miner-prebuilt
-docker push your-dockerhub-username/nimble-miner-prebuilt
+docker tag nimble-miner-prebuilt your-dockerhub-username/nimble-miner-public
+docker push your-dockerhub-username/nimble-miner-public
 ```
 Replace your-dockerhub-username with your actual Docker Hub username.
 
