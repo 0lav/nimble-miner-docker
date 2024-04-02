@@ -118,8 +118,8 @@ docker build -t nimble-miner-public .
 ```
 * Push the pre-built Docker image to a container registry (e.g., Docker Hub) for distribution:
 ```sh
-docker tag nimble-miner-prebuilt your-dockerhub-username/nimble-miner-public
-docker push your-dockerhub-username/nimble-miner-public
+docker tag nimble-miner-prebuilt your-dockerhub-username/nimble-miner-prebuilt
+docker push your-dockerhub-username/nimble-miner-prebuilt
 ```
 Replace your-dockerhub-username with your actual Docker Hub username.
 
