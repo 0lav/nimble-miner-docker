@@ -39,7 +39,7 @@ Execute this command to download and run Nimble Miner using your supplied wallet
 - Click `Customize Deployment`
 - Replace Container Image with this
   ```sh
-  0lav/nimble-miner-prebuilt:latest
+  0lav/nimble-miner-public:latest
   ```
 
 - Expand `Enviornment Variables` and enter your wallet address in a key and value format.
