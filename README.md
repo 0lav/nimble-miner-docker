@@ -18,7 +18,7 @@ This project also includes Tmux. Use "tmux attach-session -r -t nimble" through 
 Execute this command to download and run Nimble Miner using your supplied wallet address. Replace "YOURWALLETADDRESS" with yours.
 
   ```sh
-  docker run --gpus all -e NVIDIA_VISIBLE_DEVICES=all -e TMUX=false -e NIMBLE_WALLET_ADDRESS=YOURWALLETADDRESS 0lav/nimble-miner-public:latest
+  docker run --gpus all -e NVIDIA_VISIBLE_DEVICES=all -e NIMBLE_WALLET_ADDRESS=YOURWALLETADDRESS 0lav/nimble-miner-public:latest
   ```
   ### Optional Flags
   - Run without Tmux, for displaying mining activity in docker logs only.
